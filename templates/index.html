@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <title>Climate Monitor </title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='src/assets/img/favicon.ico') }}"/>
+    <link href="{{ url_for('static', filename='layouts/horizontal-dark-menu/css/light/loader.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='layouts/horizontal-dark-menu/css/dark/loader.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{ url_for('static', filename='layouts/horizontal-dark-menu/loader.js') }}"></script>
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="{{ url_for('static', filename='src/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='layouts/horizontal-dark-menu/css/light/plugins.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='layouts/horizontal-dark-menu/css/dark/plugins.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+    <link href="{{ url_for('static', filename='src/plugins/src/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='src/assets/css/light/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/assets/css/dark/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/assets/css/dark/forms/switches.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/assets/css/light/forms/switches.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/plugins/src/notification/snackbar/snackbar.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/plugins/css/light/notification/snackbar/custom-snackbar.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='src/plugins/css/dark/notification/snackbar/custom-snackbar.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
+
+</head>
+<body class="layout-boxed enable-secondaryNav">
+<!-- BEGIN LOADER -->
+<div id="load_screen">
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner-grow align-self-center"></div>
+        </div>
+    </div>
+</div>
+<!--  END LOADER -->
+
+<!--  BEGIN NAVBAR  -->
+<div class="header-container container-xxl">
+    <header class="header navbar navbar-expand-sm expand-header">
+
+        <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-menu">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </a>
+
+        <ul class="navbar-item theme-brand flex-row  text-center">
+            <li class="nav-item theme-logo">
+                <a href="index.html">
+                    <img src="{{ url_for('static', filename='src/assets/img/logo2.svg') }}" class="navbar-logo" alt="logo">
+                </a>
+            </li>
+            <li class="nav-item theme-text">
+                <a href="index.html" class="nav-link">Climate Data Monitor</a>
+            </li>
+        </ul>
+        <ul class="navbar-item flex-row ms-lg-auto ms-0 action-area">
+            <li class="nav-item theme-toggle-item">
+                <div class="form-check form-check-primary form-check-inline">
+                    <input class="form-check-input" type="radio" name="radio-checked" id="F_RADIO" checked="">
+                    <label class="form-check-label" for="F_RADIO">
+                        °F
+                    </label>
+                </div>
+
+                <div class="form-check form-check-primary form-check-inline">
+                    <input class="form-check-input" type="radio" name="radio-checked"
+                           id="C_RADIO">
+                    <label class="form-check-label" for="C_RADIO">
+                        °C
+                    </label>
+                </div>
+            </li>
+            <li class="nav-item theme-toggle-item">
+                <a href="javascript:void(0);" class="nav-link theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-moon dark-mode">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-sun light-mode">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </a>
+            </li>
+
+
+        </ul>
+
+
+    </header>
+</div>
+<!--  END NAVBAR  -->
+
+<!--  BEGIN MAIN CONTAINER  -->
+<div class="main-container" id="container">
+
+    <div class="overlay"></div>
+    <div class="search-overlay"></div>
+
+
+    <!--  BEGIN CONTENT AREA  -->
+    <div id="content" class="main-content">
+        <div class="layout-px-spacing">
+
+            <div class="middle-content container-xxl p-0">
+
+                <!--  BEGIN BREADCRUMBS  -->
+                <div class="secondary-nav">
+                    <div class="breadcrumbs-container" data-page-heading="Analytics">
+                        <header class="header navbar navbar-expand-sm">
+                            <a href="javascript:void(0);" class="btn-toggle sidebarCollapse" data-placement="bottom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-menu">
+                                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                                </svg>
+                            </a>
+                            <div class="d-flex breadcrumb-content">
+                                <div class="page-header">
+
+                                    <div class="page-title"><h3>Sensor Dashboard</h3></div>
+
+                                    <nav class="breadcrumb-style-one" aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Analytics</li>
+                                        </ol>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <!--  END BREADCRUMBS  -->
+
+                <div class="row layout-top-spacing">
+
+                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <div class="widget widget-six">
+                            <div class="widget-heading">
+                                <h5 class="">Connection Status</h5>
+
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col">
+                                    Flask Web Server Connection: <span id="flaskStatus"></span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                        <div class="widget widget-card-four">
+                            <div class="widget-content">
+                                <div class="w-header">
+                                    <div class="w-info">
+                                        <h6 class="value">Bulk Sensor Data</h6>
+                                    </div>
+                                </div>
+
+                                <div class="w-content">
+
+                                    <div class="simple-pill">
+
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="sensor-1-tab"
+                                                        data-bs-toggle="pill" data-bs-target="#sensor-1-data"
+                                                        type="button"
+                                                        role="tab" aria-controls="pills-home" aria-selected="true">
+                                                    Sensor 1
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="sensor-1-data" role="tabpanel"
+                                                 aria-labelledby="pills-home-tab" tabindex="0">
+                                                <div style="display:none;" class="sensor_data">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">Sensor ID</th>
+                                                                <th scope="col">Reading Timestamp</th>
+                                                                <th scope="col">Current Temperature <span
+                                                                        class="tempUnit">/ °F</span></th>
+                                                                <th scope="col">Current Humidity / %</th>
+                                                                <th scope="col">Error Count</th>
+                                                                <th scope="col">Alarm Count</th>
+                                                                <th class="text-center" scope="col">Data Source</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="sensor_1_table">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <br/>
+                                                    <h4>Temperature Graph</h4>
+                                                    <div id="sensor_1_temp_graph"></div>
+                                                    <br/>
+                                                    <h4>Humidity Graph</h4>
+                                                    <div id="sensor_1_hum_graph"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                            <div id="bulkResultsTime">
+
+                            </div>
+
+                            <button id="fetchAllFlask" class="btn-lg btn-primary mb-2 me-4">FETCH
+                                LAST 10 RECORDS VIA
+                                Flask
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--  BEGIN FOOTER  -->
+    <div class="footer-wrapper">
+        <div class="footer-section f-section-1">
+            <p class="">Copyright © <span class="dynamic-year">2022</span> <a target="_blank"
+                                                                              href="https://designreset.com/cork-admin/">DesignReset</a>,
+                All rights reserved.</p>
+        </div>
+        <div class="footer-section f-section-2">
+            <p class="">Coded with
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="feather feather-heart">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </p>
+        </div>
+    </div>
+    <!--  END FOOTER  -->
+</div>
+<!--  END CONTENT AREA  -->
+
+</div>
+<!-- END MAIN CONTAINER -->
+
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="{{ url_for('static', filename='src/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='src/plugins/src/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='src/plugins/src/mousetrap/mousetrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='src/plugins/src/waves/waves.min.js') }}"></script>
+<script src="{{ url_for('static', filename='layouts/horizontal-dark-menu/app.js') }}"></script>
+<script src="{{ url_for('static', filename='libraries/jquery.min.js') }}"></script>
+<!-- END GLOBAL MANDATORY SCRIPTS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+<script src="{{ url_for('static', filename='src/plugins/src/apex/apexcharts.min.js') }}"></script>
+<script src="{{ url_for('static', filename='libraries/socket.io.js') }}"></script>
+<script src="{{ url_for('static', filename='libraries/swal.js') }}"></script>
+<script src="{{ url_for('static', filename='libraries/moment.js') }}"></script>
+<script src="{{ url_for('static', filename='src/plugins/src/notification/snackbar/snackbar.min.js') }}"></script>
+
+<!--<script src="{{ url_for('static', filename='assets/js/dashboard/dash_1.js') }}"></script>-->
+<script src="{{ url_for('static', filename='src/main.js') }}"></script>
+<!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
+
+</body>
+</html>
