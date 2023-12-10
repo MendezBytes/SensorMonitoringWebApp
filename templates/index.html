@@ -67,14 +67,14 @@
         <ul class="navbar-item flex-row ms-lg-auto ms-0 action-area">
             <li class="nav-item theme-toggle-item">
                 <div class="form-check form-check-primary form-check-inline">
-                    <input class="form-check-input" type="radio" name="radio-checked" id="F_RADIO" checked="">
+                    <input class="form-check-input" type="radio" name="radio-checked" id="F_RADIO" >
                     <label class="form-check-label" for="F_RADIO">
                         °F
                     </label>
                 </div>
 
                 <div class="form-check form-check-primary form-check-inline">
-                    <input class="form-check-input" type="radio" name="radio-checked"
+                    <input class="form-check-input" type="radio" name="radio-checked" checked=""
                            id="C_RADIO">
                     <label class="form-check-label" for="C_RADIO">
                         °C
@@ -212,10 +212,8 @@
                                                                 <th scope="col">Sensor ID</th>
                                                                 <th scope="col">Reading Timestamp</th>
                                                                 <th scope="col">Current Temperature <span
-                                                                        class="tempUnit">/ °F</span></th>
-                                                                <th scope="col">Current Humidity / %</th>
-                                                                <th scope="col">Error Count</th>
-                                                                <th scope="col">Alarm Count</th>
+                                                                        class="tempUnit">/ °C</span></th>
+                                                                <th scope="col">Current Altitude / m</th>
                                                                 <th class="text-center" scope="col">Data Source</th>
                                                             </tr>
                                                             </thead>
@@ -229,8 +227,8 @@
                                                     <h4>Temperature Graph</h4>
                                                     <div id="sensor_1_temp_graph"></div>
                                                     <br/>
-                                                    <h4>Humidity Graph</h4>
-                                                    <div id="sensor_1_hum_graph"></div>
+                                                    <h4>Altitude Graph</h4>
+                                                    <div id="sensor_1_alt_graph"></div>
                                                 </div>
                                             </div>
                                         </div>
