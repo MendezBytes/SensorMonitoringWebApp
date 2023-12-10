@@ -48,7 +48,7 @@ $(document).ready(function () {
         },
         {
             serverType: "flask",
-            serverPort: 5500,
+            serverPort: 5600,
             htmlID: "flaskStatus"
         }
 
@@ -204,7 +204,7 @@ $(document).ready(function () {
         //First connect to the websocket
         let socket_obj = {}
         socket_obj['name'] = socketConfig.serverType
-        socket_obj['connection'] = io.connect(`http://localhost:${socketConfig['serverPort']}`)
+        socket_obj['connection'] = io.connect(`http://192.168.0.14:${socketConfig['serverPort']}`)
         socket_obj['htmlElement'] = $(`#${socketConfig['htmlID']}`)
 
 
