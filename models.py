@@ -13,7 +13,8 @@ DB_USERNAME = "aesd_project"
 DB_PASSWORD = "Paxxw0rd!"
 DB_HOST = "localhost"
 DB_NAME = "climate_monitoring"
-db_url = f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:5432/{DB_NAME}"
+db_url = os.getenv('DATABASE_URL')
+
 
 # Create a SQLAlchemy engine
 engine = create_engine(db_url)
